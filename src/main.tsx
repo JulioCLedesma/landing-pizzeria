@@ -1,3 +1,4 @@
+// src/main.tsx
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 
@@ -8,38 +9,28 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 // JS de Bootstrap (tooltips, navbar, etc.)
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 
-import { RouterProvider, createBrowserRouter, Outlet } from 'react-router-dom'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import AppLayout from './AppLayout'
 import Home from './pages/Home'
 import Menu from './pages/Menu'
 import Promos from './pages/Promos'
 import Contact from './pages/Contact'
-import Header from './components/Header'
-import Footer from './components/Footer'
-
-function AppLayout() {
-  return (
-    <>
-      <Header />
-      <main className="container py-4">
-        <Outlet />
-      </main>
-      <Footer />
-    </>
-  )
-}
 
 const router = createBrowserRouter([
-  { path: '/', element: <AppLayout />, children: [
+  {
+    path: '/',
+    element: <AppLayout />,
+    children: [
       { index: true, element: <Home /> },
       { path: 'menu', element: <Menu /> },
       { path: 'promos', element: <Promos /> },
       { path: 'contact', element: <Contact /> },
-  ]},
+    ],
+  },
 ])
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <RouterProvider router={router} />
   </React.StrictMode>
 )
-

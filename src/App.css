@@ -1,5 +1,9 @@
-#root {
-  max-width: 1280px;
+html, body, #root { height: 100%; }
+body { margin: 0; padding: 0;}
+#root { display: grid; grid-template-rows: auto 1fr auto; min-height: 100dvh; }
+
+/* Si quieres el ancho/padding del template, aplícalo a un contenedor interno */
+.page {
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -11,12 +15,15 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
+
 
 @keyframes logo-spin {
   from {
