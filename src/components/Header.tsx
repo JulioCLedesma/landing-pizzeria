@@ -1,20 +1,29 @@
+import { Link, NavLink } from 'react-router-dom';
+
 export default function Header() {
   return (
     <nav className="navbar navbar-expand-lg bg-light border-bottom">
       <div className="container">
-        <a className="navbar-brand brand-italy text-primary" href="/">Pizzería Luiguis</a>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+        <Link className="navbar-brand brand-italy text-primary" to="/">Pizzería Luiguis</Link>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#nav"
+          aria-label="Toggle navigation"
+        >
           <span className="navbar-toggler-icon"></span>
         </button>
         <div id="nav" className="collapse navbar-collapse">
           <ul className="navbar-nav ms-auto gap-2">
-            <li className="nav-item"><a className="nav-link" href="/menu">Menú</a></li>
-            <li className="nav-item"><a className="nav-link" href="/us">Sobre Nosotros</a></li>
-            <li className="nav-item"><a className="nav-link" href="/promos">Contacto</a></li>
-            <li className="nav-item"><a className="btn btn-cta" href="/contact">Ordenar</a></li>
+            <li className="nav-item"><NavLink className="nav-link" to="/menu">Menú</NavLink></li>
+            <li className="nav-item"><NavLink className="nav-link" to="/us">Sobre Nosotros</NavLink></li>
+            <li className="nav-item"><NavLink className="nav-link" to="/promos">Promociones</NavLink></li>
+            <li className="nav-item"><NavLink className="nav-link" to="/contact">Contacto</NavLink></li>
+            <li className="nav-item"><Link className="btn btn-cta" to="/menu">Ordenar</Link></li>
           </ul>
         </div>
       </div>
     </nav>
-  )
+  );
 }

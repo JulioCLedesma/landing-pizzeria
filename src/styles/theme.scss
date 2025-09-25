@@ -129,3 +129,25 @@ a.btn.btn-cta:focus {
   .promo-plate{ width: 180px; height: 180px; }
   .promo-bar{ height: 44px; }
 }
+
+.font-playfair {
+  font-family: 'Playfair Display', serif;
+}
+
+// Imagen en la página "Sobre Nosotros"
+.about-image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+// Título "OUR MENU" en la página de inicio
+.home-menu-title {
+  letter-spacing: .02em;
+}
+
+// Subtítulo "Special offer" en la página de inicio
+.special-offer-subtitle {
+  letter-spacing: .15em;
+  color: #1E3B2E;
+}

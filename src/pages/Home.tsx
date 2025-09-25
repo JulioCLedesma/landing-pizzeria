@@ -1,4 +1,3 @@
-// src/pages/Home.tsx
 export default function Home() {
   return (
     <>
@@ -7,8 +6,7 @@ export default function Home() {
           {/* Texto (izquierda en md+) */}
           <div className="col-12 col-md-6 text-center text-md-start">
             <h1
-              className="display-1 fw-bold lh-1"
-              style={{ fontFamily: 'Playfair Display, serif' }}
+              className="display-1 fw-bold lh-1 font-playfair"
             >
               Simple &<br /> Tasty Pizzas
             </h1>
@@ -36,11 +34,7 @@ export default function Home() {
       <section aria-labelledby="our-menu" className="py-5">
         <h2
           id="our-menu"
-          className="text-center fw-bold mb-4"
-          style={{
-            fontFamily: 'Playfair Display, serif',
-            letterSpacing: '.02em',
-          }}
+          className="text-center fw-bold mb-4 font-playfair home-menu-title"
         >
           OUR MENU
         </h2>
@@ -53,12 +47,11 @@ export default function Home() {
                 <img src="1.png" alt="Pizza Margherita" />
               </div>
               <h5
-                className="fw-semibold"
-                style={{ fontFamily: 'Playfair Display, serif' }}
+                className="fw-semibold font-playfair"
               >
                 Margherita
               </h5>
-              <div className="price mb-3">$259</div>
+              <div className="price mb-3">$149</div>
               <a className="btn btn-cta" href="/menu#margherita">
                 ORDENAR
               </a>
@@ -72,12 +65,11 @@ export default function Home() {
                 <img src="2.png" alt="Pizza Pepperoni" />
               </div>
               <h5
-                className="fw-semibold"
-                style={{ fontFamily: 'Playfair Display, serif' }}
+                className="fw-semibold font-playfair"
               >
                 Pepperoni
               </h5>
-              <div className="price mb-3">$259</div>
+              <div className="price mb-3">$169</div>
               <a className="btn btn-cta" href="/menu#pepperoni">
                 ORDENAR
               </a>
@@ -91,8 +83,7 @@ export default function Home() {
                 <img src="/4.png" alt="Pizza Veggie" />
               </div>
               <h5
-                className="fw-semibold"
-                style={{ fontFamily: 'Playfair Display, serif' }}
+                className="fw-semibold font-playfair"
               >
                 Veggie
               </h5>
@@ -105,24 +96,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- SPECIAL OFFER (full-bleed) --- */}
       <section className="py-5 px-0">
         <div className="promo-banner full-bleed position-relative overflow-hidden">
-          {/* Contenido centrado como tu .container principal */}
           <div className="container">
             <div className="row align-items-center g-0 py-4 py-md-5">
-              {/* Texto */}
               <div className="col-12 col-md-7">
                 <p
-                  className="text-uppercase mb-2 fw-semibold small"
-                  style={{ letterSpacing: '.15em', color: '#1E3B2E' }}
+                  className="text-uppercase mb-2 fw-semibold small special-offer-subtitle"
                 >
                   Special offer
                 </p>
 
                 <h3
-                  className="display-1 fw-bold lh-1 mb-3"
-                  style={{ fontFamily: 'Playfair Display, serif' }}
+                  className="display-1 fw-bold lh-1 mb-3 font-playfair"
                 >
                   2x1 on all pizzas
                 </h3>
@@ -143,11 +129,10 @@ export default function Home() {
               </div>
             </div>
           </div>
-
-          {/* Franja oscura inferior */}
           <div className="promo-bar" />
         </div>
       </section>
     </>
   )
 }
+
