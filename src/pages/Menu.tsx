@@ -8,7 +8,7 @@ export default function Menu() {
           {/* Margherita */}
           <div className="col-12 col-sm-6 col-lg-3">
             <div className="card h-100 shadow-sm">
-              <img src="/4.png" className="card-img-top p-4" alt="Margherita" />
+              <img src="public/4.png" className="card-img-top p-4" alt="Margherita" />
               <div className="card-body d-flex flex-column">
                 <h5 className="card-title font-playfair">Margherita</h5>
                 <p className="card-text small flex-grow-1">Tomate, mozzarella, albahaca fresca.</p>
