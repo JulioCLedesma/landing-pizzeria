@@ -1,7 +1,8 @@
-import imgMargherita from '../assets/4.png';
-import imgPepperoni from '../assets/5.png';
-import imgCuatroQuesos from '../assets/6.png';
-import imgHawaiana from '../assets/2.png';
+// CAMBIO: Se usan rutas absolutas desde la raíz del proyecto (/src)
+import imgMargherita from '/src/assets/4.png';
+import imgPepperoni from '/src/assets/5.png';
+import imgCuatroQuesos from '/src/assets/6.png';
+import imgHawaiana from '/src/assets/2.png';
 
 // Este es el arreglo de datos de nuestro menú
 const menuItems = [
