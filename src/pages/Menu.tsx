@@ -1,4 +1,5 @@
 export default function Menu() {
+  //haciendo redepoly
   const items = [
     // Rutas corregidas: Se quita "public/"
     { name: 'Margherita', desc: 'Tomate, mozzarella, albahaca fresca.', price: 149, img: '/4.png' },
