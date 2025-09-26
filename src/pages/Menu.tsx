@@ -9,6 +9,7 @@ import imgSiete from '/src/assets/7.png'
 import imgOcho from '/src/assets/8.png'
 
 import { useCallback, useRef } from 'react'
+// Asegúrate de que este archivo exista y exporte las constantes
 import { DIDI_STORE_WEB, DIDI_APP_URI } from '../components/config'
 
 // Este es el arreglo de datos de nuestro menú
@@ -63,7 +64,14 @@ const menuItems = [
   },
 ]
 
+// SOLUCIÓN: Se añade una validación para evitar el error si la URL base es inválida.
 const buildTrackedUrl = (base: string, source = 'menu') => {
+  // Si la URL base no es una cadena válida que empiece con http, no se puede construir.
+  if (!base || !base.startsWith('http')) {
+    console.warn('URL base de DiDi no configurada. Botón no funcional.')
+    return '#' // Devuelve un enlace seguro para no romper la app
+  }
+
   const url = new URL(base)
   url.searchParams.set('utm_source', source)
   url.searchParams.set('utm_medium', 'website')
@@ -72,9 +80,6 @@ const buildTrackedUrl = (base: string, source = 'menu') => {
 }
 
 export default function Menu() {
-  // Imprimimos los datos en la consola del navegador para depurar
-  console.log('Datos del menú cargados:', menuItems)
-
   const clickTimer = useRef<number | null>(null)
 
   const openDiDi = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -82,11 +87,15 @@ export default function Menu() {
     const webUrl = buildTrackedUrl(DIDI_STORE_WEB, 'menu')
     const appUri = (DIDI_APP_URI ?? '').trim()
 
+    // Si la URL web no es válida, no hacer nada.
+    if (webUrl === '#') {
+      alert('La opción de pedir por DiDi no está disponible en este momento.')
+      return
+    }
+
     if (appUri) {
       const now = Date.now()
-      // Intentar abrir la app
       window.location.href = appUri
-      // Si no abre, caer a la web
       clickTimer.current = window.setTimeout(() => {
         if (Date.now() - now < 3000)
           window.open(webUrl, '_blank', 'noopener,noreferrer')
@@ -94,7 +103,6 @@ export default function Menu() {
       return
     }
 
-    // Sin appUri -> ir directo a la web
     window.open(webUrl, '_blank', 'noopener,noreferrer')
   }, [])
 
@@ -118,22 +126,17 @@ export default function Menu() {
                   <div className="d-flex justify-content-between align-items-center mt-auto">
                     <span className="fw-bold">${item.price}</span>
 
-                    {/* Botones de acción (respetando tu layout) */}
                     <div className="d-flex gap-2">
                       <button className="btn btn-sm btn-primary">
                         Ordenar
                       </button>
 
-                      {/* Botón DiDi: app (si hay) + fallback web con UTM */}
                       <a
-                        href={
-                          DIDI_APP_URI ||
-                          buildTrackedUrl(DIDI_STORE_WEB, 'menu')
-                        }
+                        href={buildTrackedUrl(DIDI_STORE_WEB, 'menu')}
                         onClick={openDiDi}
                         className="btn btn-sm btn-warning"
                         rel="noopener noreferrer"
-                        target={DIDI_APP_URI ? undefined : '_blank'}
+                        target="_blank"
                         aria-label="Pedir en DiDi"
                         title="Pedir en DiDi"
                       >
@@ -150,3 +153,4 @@ export default function Menu() {
     </section>
   )
 }
+
