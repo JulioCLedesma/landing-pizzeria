@@ -1,6 +1,6 @@
-// src/components/OrderOnDiDi.tsx
 import { useCallback, useEffect, useRef, useState } from "react";
-import { DIDI_STORE_WEB, DIDI_APP_URI } from "@/config";
+// SOLUCIÓN: Se cambia la importación a una ruta relativa para evitar problemas con el alias en Vercel.
+import { DIDI_STORE_WEB, DIDI_APP_URI } from "./config";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 type Props = {
@@ -9,6 +9,11 @@ type Props = {
 };
 
 const buildTrackedUrl = (base: string, source = "landing") => {
+  // Se añade validación para evitar que la app se rompa si la URL es inválida
+  if (!base || !base.startsWith("http")) {
+    console.warn(`[buildTrackedUrl] URL base inválida: ${base}`);
+    return "#";
+  }
   const url = new URL(base);
   url.searchParams.set("utm_source", source);
   url.searchParams.set("utm_medium", "website");
@@ -25,6 +30,10 @@ export default function OrderOnDiDi({ className = "", source = "landing" }: Prop
 
   const openDiDi = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
+    if (webUrl === "#") {
+        alert("La opción para ordenar por DiDi no está disponible en este momento.");
+        return;
+    }
     if (appUri) {
       const now = Date.now();
       window.location.href = appUri;
@@ -81,3 +90,4 @@ export default function OrderOnDiDi({ className = "", source = "landing" }: Prop
     </>
   );
 }
+
