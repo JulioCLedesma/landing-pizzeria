@@ -151,3 +151,107 @@ a.btn.btn-cta:focus {
   letter-spacing: .15em;
   color: #1E3B2E;
 }
+
+/* Botón flotante de WhatsApp */
+.whatsapp-fab {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #25D366;            /* verde WhatsApp */
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;                 /* tamaño del ícono */
+  text-decoration: none;
+  box-shadow: 0 10px 25px rgba(0,0,0,.15);
+  z-index: 1050;                   /* por encima del contenido */
+  transition: transform .15s ease, box-shadow .15s ease, opacity .2s ease;
+}
+
+.whatsapp-fab:hover,
+.whatsapp-fab:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0,0,0,.2);
+  outline: none;
+}
+
+.whatsapp-fab:active {
+  transform: translateY(0);
+}
+
+/* Pequeño “halo” sutil */
+.whatsapp-fab::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.45);
+  animation: wa-pulse 2s infinite;
+  pointer-events: none;
+}
+
+@keyframes wa-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(37,211,102,0.45); }
+  70%  { box-shadow: 0 0 0 16px rgba(37,211,102,0); }
+  100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+}
+
+/* Ajuste en móviles para no tapar el contenido/hud del sistema */
+@media (max-width: 576px) {
+  .whatsapp-fab {
+    right: 16px;
+    bottom: 16px;
+    width: 54px;
+    height: 54px;
+    font-size: 26px;
+  }
+}
+
+/* Tarjeta de promociones con imagen pro */
+.promo-card {
+  border-radius: 14px;
+  overflow: hidden; /* recorta la imagen con el borde redondeado */
+}
+
+.promo-thumb {
+  position: relative;
+  /* Relación de aspecto uniforme para todas las imágenes */
+  aspect-ratio: 16 / 9;
+  background: #f3f3f3;
+  overflow: hidden;
+}
+
+.promo-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;     /* llena sin deformar */
+  display: block;
+  transform: scale(1.02);
+  transition: transform .35s ease, filter .35s ease;
+}
+
+.promo-card:hover .promo-thumb img {
+  transform: scale(1.06);
+  filter: saturate(1.05);
+}
+
+/* Chip superpuesto (tag) */
+.promo-chip {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  padding: .35rem .6rem;
+  font-weight: 700;
+  font-size: .75rem;
+  border-radius: 999px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.18);
+}
+
+/* Ajuste de radios coherentes con la card */
+.promo-card .card-body {
+  padding: 1rem 1rem 1.1rem;
+}

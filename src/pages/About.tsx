@@ -5,7 +5,7 @@ export default function About() {
         {/* Columna de la Imagen */}
         <div className="col-12 col-lg-6">
           <img 
-            src="https://placehold.co/600x450/A63429/FFFFFF?text=Nuestra+Cocina" 
+            src="/historia.jpg" 
             alt="El interior de la cocina de Pizzería Luiguis" 
             className="img-fluid rounded shadow-lg about-image"
           />

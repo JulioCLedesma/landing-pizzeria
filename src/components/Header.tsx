@@ -1,8 +1,9 @@
+// src/components/Header.tsx
 import { Link, NavLink } from 'react-router-dom';
 
 export default function Header() {
   return (
-    <nav className="navbar navbar-expand-lg bg-light border-bottom">
+    <nav className="navbar navbar-expand-lg bg-light border-bottom sticky-top" style={{ zIndex: 1030 }}>
       <div className="container">
         <Link className="navbar-brand brand-italy text-primary" to="/">Pizzería Luiguis</Link>
         <button
