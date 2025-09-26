@@ -10,13 +10,13 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-
-    "baseUrl": ".",                 // <-- necesario para paths
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],             // <-- alias para TS
-      "@": ["src"]
+      "@/*": ["src/*"]
     },
-    "types": ["vite/client"]        // <-- tipos de Vite
+    "types": ["vite/client"]
   },
-  "include": ["src"]
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }
+
