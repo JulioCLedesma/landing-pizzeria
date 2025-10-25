@@ -9,59 +9,24 @@ import imgSiete from '/src/assets/7.png'
 import imgOcho from '/src/assets/8.png'
 
 import { useCallback, useRef } from 'react'
+import { useNavigate } from 'react-router-dom' 
+import { toast } from 'react-toastify'                  
+import { useCart } from '../hooks/useCart'           
+import type { Addable } from '../context/cart'        
+
 // Asegúrate de que este archivo exista y exporte las constantes
 import { DIDI_STORE_WEB, DIDI_APP_URI } from '../components/config'
 
 // Este es el arreglo de datos de nuestro menú
 const menuItems = [
-  {
-    name: 'Margherita',
-    desc: 'Tomate, mozzarella, albahaca fresca.',
-    price: 149,
-    img: imgMargherita,
-  },
-  {
-    name: 'Pepperoni',
-    desc: 'Clásica con pepperoni crujiente.',
-    price: 169,
-    img: imgPepperoni,
-  },
-  {
-    name: 'Cuatro Quesos',
-    desc: 'Mozzarella, gorgonzola, parmesano, provolone.',
-    price: 189,
-    img: imgCuatroQuesos,
-  },
-  {
-    name: 'Hawaiana',
-    desc: 'Jamón y piña (sí, somos #TeamPiña).',
-    price: 169,
-    img: imgHawaiana,
-  },
-  {
-    name: 'Mexicana',
-    desc: 'Chorizo, jalapeño, cebolla morada y elote.',
-    price: 189,
-    img: imgTres,
-  },
-  {
-    name: 'BBQ Chicken',
-    desc: 'Pollo a la BBQ, cebolla, mozzarella y cilantro.',
-    price: 199,
-    img: imgUno,
-  },
-  {
-    name: 'Veggie Supreme',
-    desc: 'Pimiento, champiñón, aceituna, cebolla y tomate.',
-    price: 179,
-    img: imgSiete,
-  },
-  {
-    name: 'Diávola',
-    desc: 'Salami picante, hojuelas de chile y mozzarella.',
-    price: 199,
-    img: imgOcho,
-  },
+  { name: 'Margherita', desc: 'Tomate, mozzarella, albahaca fresca.', price: 149, img: imgMargherita },
+  { name: 'Pepperoni', desc: 'Clásica con pepperoni crujiente.', price: 169, img: imgPepperoni },
+  { name: 'Cuatro Quesos', desc: 'Mozzarella, gorgonzola, parmesano, provolone.', price: 189, img: imgCuatroQuesos },
+  { name: 'Hawaiana', desc: 'Jamón y piña (sí, somos #TeamPiña).', price: 169, img: imgHawaiana },
+  { name: 'Mexicana', desc: 'Chorizo, jalapeño, cebolla morada y elote.', price: 189, img: imgTres },
+  { name: 'BBQ Chicken', desc: 'Pollo a la BBQ, cebolla, mozzarella y cilantro.', price: 199, img: imgUno },
+  { name: 'Veggie Supreme', desc: 'Pimiento, champiñón, aceituna, cebolla y tomate.', price: 179, img: imgSiete },
+  { name: 'Diávola', desc: 'Salami picante, hojuelas de chile y mozzarella.', price: 199, img: imgOcho },
 ]
 
 // SOLUCIÓN: Se añade una validación para evitar el error si la URL base es inválida.
@@ -81,6 +46,16 @@ const buildTrackedUrl = (base: string, source = 'menu') => {
 
 export default function Menu() {
   const clickTimer = useRef<number | null>(null)
+
+  // ⬇️ carrito + navegación
+  const { addItem } = useCart()
+  const navigate = useNavigate()
+
+  const handleOrdenar = (p: Addable) => {
+    addItem(p)
+    toast.success('¡Pedido agregado!', { position: 'top-right', autoClose: 1400 })
+    navigate('/ordenar')
+  }
 
   const openDiDi = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
@@ -127,7 +102,12 @@ export default function Menu() {
                     <span className="fw-bold">${item.price}</span>
 
                     <div className="d-flex gap-2">
-                      <button className="btn btn-sm btn-primary">
+                      <button
+                        className="btn btn-sm btn-primary"
+                        onClick={() =>
+                          handleOrdenar({ name: item.name, price: item.price, img: item.img })
+                        }
+                      >
                         Ordenar
                       </button>
 
@@ -153,4 +133,3 @@ export default function Menu() {
     </section>
   )
 }
-

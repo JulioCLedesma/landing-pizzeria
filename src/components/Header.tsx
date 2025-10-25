@@ -21,7 +21,7 @@ export default function Header() {
             <li className="nav-item"><NavLink className="nav-link" to="/us">Sobre Nosotros</NavLink></li>
             <li className="nav-item"><NavLink className="nav-link" to="/promos">Promociones</NavLink></li>
             <li className="nav-item"><NavLink className="nav-link" to="/contact">Contacto</NavLink></li>
-            <li className="nav-item"><Link className="btn btn-cta" to="/menu">Ordenar</Link></li>
+            <li className="nav-item"><Link className="btn btn-cta" to="/ordenar">Ordenar</Link></li>
           </ul>
         </div>
       </div>
