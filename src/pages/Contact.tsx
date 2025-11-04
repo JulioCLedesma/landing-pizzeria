@@ -111,7 +111,7 @@ export default function Contact() {
                     placeholder="¿En qué podemos ayudarte?"
                     required
                     value={message}
-                    onChange={(e) => setMessage(e.g.target.value)}
+                    onChange={(e) => setMessage(e.target.value)}
                   ></textarea>
                 </div>
 
