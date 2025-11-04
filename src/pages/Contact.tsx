@@ -2,12 +2,10 @@
 import { useState } from "react";
 
 // URL de tu API.
-// En desarrollo, apunta a tu servidor local.
-// En producción, Vercel usará la ruta relativa.
-// Usamos process.env.NODE_ENV para mayor compatibilidad con diferentes entornos
-const API_URL = process.env.NODE_ENV === 'development'
-  ? "http://localhost:3001/api/contact"
-  : "/api/contact";
+// Usamos una ruta relativa.
+// En producción, Vercel la manejará (/api/contact).
+// En desarrollo, esto requiere que tu 'vite.config.ts' tenga un proxy.
+const API_URL = "/api/contact";
 
 export default function Contact() {
   // --- Estados para el formulario ---
@@ -23,19 +21,14 @@ export default function Contact() {
   } | null>(null);
 
   // --- Estados para el Mapa ---
-  // (Esto es de tu código original, lo dejamos igual)
-  const address = "Plaza Galerías, Zapopan, Jalisco, México";
-  
-  // 1. Esta es la URL del 'iframe' que me diste (para el mapa incrustado)
+  const address = "Av. Principal 123, Col. Centro";
   const mapsEmbedSrc = "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7465.843394804275!2d-103.42110879266772!3d20.672764413240056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2smx!4v1762293538035!5m2!1ses!2smx";
-
-  // 2. Esta es la URL de 'Compartir' que me diste (para el botón)
   const mapsLink = "https://maps.app.goo.gl/EvK4nTQoRZtTYWSCA";
 
 
   // --- Handler para enviar el formulario ---
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault(); // Prevenimos la recarga de la página
+    e.preventDefault(); 
     setIsSubmitting(true);
     setFormStatus(null);
 
@@ -51,42 +44,34 @@ export default function Contact() {
       const data = await res.json();
 
       if (!res.ok) {
-        // Si el servidor devuelve un error (ej. 400, 500)
         throw new Error(data.error || "No se pudo enviar el mensaje.");
       }
 
-      // Éxito
       setFormStatus({
         type: "success",
         message: "¡Mensaje enviado con éxito! Te contactaremos pronto.",
       });
-      // Limpiamos el formulario
       setName("");
       setEmail("");
       setMessage("");
     } catch (err: any) {
-      // Error de red o del servidor
       setFormStatus({
         type: "error",
         message: err.message || "Ocurrió un error. Intenta de nuevo.",
       });
     } finally {
-      setIsSubmitting(false); // Reactivamos el botón
+      setIsSubmitting(false); 
     }
   };
 
   return (
     <section className="py-5">
       <h1 className="display-5 fw-bold mb-4">Contacto</h1>
-
       <div className="row g-4">
         {/* Formulario */}
         <div className="col-12 col-lg-8">
           <div className="card shadow-sm">
             <div className="card-body">
-              {/* --- INICIAN CAMBIOS --- */}
-
-              {/* 1. Añadimos el handler onSubmit */}
               <form className="row g-3" onSubmit={handleSubmit}>
                 <div className="col-md-6">
                   <label htmlFor="name" className="form-label">
@@ -97,7 +82,6 @@ export default function Contact() {
                     className="form-control"
                     placeholder="Tu nombre"
                     required
-                    // 2. Conectamos el estado
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                   />
@@ -112,7 +96,6 @@ export default function Contact() {
                     className="form-control"
                     placeholder="tucorreo@ejemplo.com"
                     required
-                    // 3. Conectamos el estado
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
@@ -127,13 +110,11 @@ export default function Contact() {
                     className="form-control"
                     placeholder="¿En qué podemos ayudarte?"
                     required
-                    // 4. Conectamos el estado
                     value={message}
-                    onChange={(e) => setMessage(e.target.value)}
+                    onChange={(e) => setMessage(e.g.target.value)}
                   ></textarea>
                 </div>
 
-                {/* 5. Mostramos mensajes de éxito o error */}
                 {formStatus && (
                   <div className="col-12">
                     <div
@@ -149,7 +130,6 @@ export default function Contact() {
                 )}
 
                 <div className="col-12">
-                  {/* 6. Deshabilitamos el botón mientras se envía */}
                   <button
                     type="submit"
                     className="btn btn-primary"
@@ -159,7 +139,6 @@ export default function Contact() {
                   </button>
                 </div>
               </form>
-              {/* --- FIN CAMBIOS --- */}
             </div>
           </div>
         </div>
@@ -170,18 +149,18 @@ export default function Contact() {
             <div className="ratio ratio-4x3">
               <iframe
                 title="Ubicación en Google Maps"
-                src={mapsEmbedSrc} // <--- Variable corregida
+                src={mapsEmbedSrc} 
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 style={{ border: 0 }}
-                allowFullScreen // Se escribe así en React/JSX
+                allowFullScreen 
               />
             </div>
-            <div className="card-body d-flex justify-content-between align-items-center">
+            <div className="card-body d-flex justify-content-between align-items.center">
               <small className="text-muted me-3">{address}</small>
               <a
                 className="btn btn-sm btn-outline-primary"
-                href={mapsLink} // <--- Variable corregida
+                href={mapsLink} 
                 target="_blank"
                 rel="noopener noreferrer"
               >

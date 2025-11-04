@@ -1,6 +1,8 @@
-// hooks/useOrder.ts
 import { toast } from "react-toastify";
-import { useCart } from "@/context/CartContext";
+// ERROR 1 CORREGIDO:
+// Cambiamos { useCart } por useCart (import por defecto)
+// Asumiendo que la ruta "@/context/CartContext" es correcta.
+import { useCart } from '../hooks/useCart';
 
 export interface OrderItem {
   id: string;

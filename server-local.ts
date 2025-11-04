@@ -50,6 +50,9 @@ app.post("/api/checkout", async (req, res) => {
 });
 
 const PORT = 3001;
+console.log("ENV OWNER_EMAIL:", process.env.OWNER_EMAIL);
+console.log("ENV FROM_EMAIL :", process.env.FROM_EMAIL);
+
 app.listen(PORT, () => {
   console.log(`✅ Servidor backend en http://localhost:${PORT}`);
   console.log("🔑 Clave Stripe:", process.env.STRIPE_SECRET_KEY?.slice(0, 15) + "...");
