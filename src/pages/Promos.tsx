@@ -1,4 +1,21 @@
+// src/pages/Promos.tsx
+import React from "react";
+import { toast } from "react-toastify";
+// 👇 ajusta esta ruta según tu estructura real:
+import { useCart } from '../hooks/useCart';
+
+function slugify(s: string) {
+  return s
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)+/g, "");
+}
+
 export default function Promos() {
+  const { addItem } = useCart();
+
   const promos = [
     {
       title: 'Martes 2x1',
@@ -23,6 +40,25 @@ export default function Promos() {
     },
   ];
 
+    const handleOrder = (p: typeof promos[number]) => {
+    const id = `promo_${slugify(p.title)}`;
+
+    // Arma el payload que espera tu CartContext
+    const item = {
+      id,
+      name: p.title,
+      price: p.price ?? 0,
+      image: p.img,
+      type: "promo",
+      // qty: 1, // si tu addItem requiere qty, descomenta
+      // notes: "", // si manejas notas
+    };
+
+    addItem(item);
+    toast.success(`Agregado: ${p.title}`);
+  };
+
+  
   return (
     <section className="py-5">
       <h1 className="display-5 fw-bold mb-4">Promociones</h1>

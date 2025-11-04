@@ -11,21 +11,32 @@
     "format": "prettier --write \"src/**/*.{ts,tsx,scss}\""
   },
   "dependencies": {
+    "@stripe/stripe-js": "^8.3.0",
+    "body-parser": "^2.2.0",
     "bootstrap": "^5.3.8",
     "bootstrap-icons": "^1.13.1",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
     "lucide-react": "^0.544.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.9.1",
-    "react-toastify": "^11.0.5"
+    "react-toastify": "^11.0.5",
+    "resend": "^6.4.0",
+    "stripe": "^19.2.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.35.0",
-    "@types/node": "^24.5.2",
+    "@types/body-parser": "^1.19.6",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.5",
+    "@types/node": "^24.10.0",
     "@types/react": "^19.1.10",
     "@types/react-dom": "^19.1.7",
     "@typescript-eslint/eslint-plugin": "^8.44.0",
     "@typescript-eslint/parser": "^8.44.0",
+    "@vercel/node": "^5.5.4",
     "@vitejs/plugin-react": "^5.0.0",
     "eslint": "^9.35.0",
     "eslint-config-prettier": "^10.1.8",
@@ -35,6 +46,7 @@
     "globals": "^16.3.0",
     "prettier": "^3.6.2",
     "sass": "^1.77.6",
+    "ts-node": "^10.9.2",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.39.1",
     "vite": "^7.1.2"
