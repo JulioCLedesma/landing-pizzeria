@@ -43,7 +43,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     await resend.emails.send({
       from: FROM_EMAIL,
       to: email,
-      subject: "Recibimos tu mensaje – Pizzería",
+      subject: "Recibimos tu mensaje Pizzería",
       text: `Hola ${name},\n\nGracias por escribirnos. Ya recibimos tu mensaje y te contactaremos pronto.\n\nTu mensaje:\n${message}\n\n– Pizzería`,
       html: `
         <p>Hola ${name},</p>
