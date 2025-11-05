@@ -3,7 +3,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import WhatsAppFab from './components/WhatsAppFab'
 import { ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+import 'react-toastify/ReactToastify.css';
 
 export default function AppLayout() {
   return (
@@ -20,7 +20,16 @@ export default function AppLayout() {
       <WhatsAppFab />
 
       {/* Contenedor global de toasts */}
-      <ToastContainer position="top-right" autoClose={1400} newestOnTop />
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        newestOnTop
+        closeOnClick
+        pauseOnFocusLoss={false}
+        draggable
+        limit={3}
+        theme="colored"
+      />
     </div>
   )
 }

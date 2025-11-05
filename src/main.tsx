@@ -14,6 +14,7 @@ import Contact from './pages/Contact'
 import About from './pages/About'
 import Ordenar from './pages/Ordenar'
 import CartProvider from './context/CartContext'
+import Cart from './pages/Cart'
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
       { path: 'promos', element: <Promos /> },
       { path: 'contact', element: <Contact /> },
       { path: 'us', element: <About /> },
+      { path: 'cart', element: <Cart /> },
     ],
   },
 ])

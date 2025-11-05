@@ -1,4 +1,4 @@
-// src/components/Header.tsx
+// src/components/Header.tsx d
 import { Link, NavLink } from 'react-router-dom';
 
 export default function Header() {
