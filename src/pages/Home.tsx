@@ -2,6 +2,7 @@
 export default function Home() {
   return (
     <>
+      {/* HERO */}
       <section className="py-5">
         <div className="row align-items-center g-2">
           {/* Texto (izquierda en md+) */}
@@ -33,6 +34,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* OUR MENU (destacados) */}
       <section aria-labelledby="our-menu" className="py-5">
         <h2
           id="our-menu"
@@ -105,7 +107,63 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- SPECIAL OFFER (full-bleed) --- */}
+      {/* TESTIMONIOS */}
+      <section className="py-5">
+        <h2
+          className="text-center fw-bold mb-4"
+          style={{ fontFamily: 'Playfair Display, serif' }}
+        >
+          Lo que dicen nuestros clientes
+        </h2>
+
+        <div className="row g-4">
+          {[
+            {
+              n: 'María G.',
+              t: 'La mejor pizza de la zona. Masa perfecta y entrega rapidísima.',
+              a: '/1.png',
+            },
+            {
+              n: 'Carlos R.',
+              t: 'El combo familiar es un golazo para el fin de semana.',
+              a: '/5.png',
+            },
+            {
+              n: 'Sofía L.',
+              t: 'Amo que usen ingredientes locales. Se nota en el sabor.',
+              a: '/4.png',
+            },
+          ].map((r, i) => (
+            <div key={i} className="col-12 col-md-4">
+              <div className="card h-100 border-0 shadow-sm">
+                <div className="card-body">
+                  <div className="d-flex align-items-center mb-3">
+                    <img
+                      src={r.a}
+                      alt={r.n}
+                      className="rounded-circle me-3"
+                      style={{ width: 48, height: 48, objectFit: 'cover' }}
+                    />
+                    <div>
+                      <strong>{r.n}</strong>
+                      <div className="text-warning small">
+                        <i className="bi bi-star-fill"></i>{' '}
+                        <i className="bi bi-star-fill"></i>{' '}
+                        <i className="bi bi-star-fill"></i>{' '}
+                        <i className="bi bi-star-fill"></i>{' '}
+                        <i className="bi bi-star-half"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p className="mb-0 text-muted">{r.t}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* SPECIAL OFFER (full-bleed) */}
       <section className="py-5 px-0">
         <div className="promo-banner full-bleed position-relative overflow-hidden">
           <div className="container">
@@ -146,6 +204,25 @@ export default function Home() {
           {/* Franja oscura inferior */}
           <div className="promo-bar" />
         </div>
+      </section>
+
+      {/* CTA FINAL */}
+      <section className="py-5 text-center">
+        <h3
+          className="fw-bold mb-3"
+          style={{ fontFamily: 'Playfair Display, serif' }}
+        >
+          ¿Listo para ordenar?
+        </h3>
+        <p className="text-muted mb-4">
+          Explora el menú o aprovecha las promociones vigentes.
+        </p>
+        <a href="/menu" className="btn btn-cta me-2">
+          Ver menú
+        </a>
+        <a href="/promos" className="btn btn-outline-dark">
+          Ver promociones
+        </a>
       </section>
     </>
   )
