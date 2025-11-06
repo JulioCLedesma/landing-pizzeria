@@ -256,3 +256,51 @@ a.btn.btn-cta:focus {
 .promo-card .card-body {
   padding: 1rem 1rem 1.1rem;
 }
+
+/* ==== Equipo v2: avatar circular ==== */
+.team-circle {
+  border-radius: 16px;
+  transition: transform .2s ease, box-shadow .2s ease;
+  padding-top: 42px;               /* espacio para que el avatar “respire” */
+}
+.team-circle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(0,0,0,.12);
+}
+
+.team-circle__avatar {
+  position: relative;
+  width: 140px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(0,0,0,.15);
+  background: #eee;
+}
+@media (min-width: 992px) {
+  .team-circle__avatar { width: 160px; }
+}
+
+.team-circle__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;               /* recorte limpio, sin deformar */
+  display: block;
+  transform: scale(1.02);
+  transition: transform .25s ease, filter .25s ease;
+}
+.team-circle:hover .team-circle__avatar img {
+  transform: scale(1.06);
+  filter: saturate(1.05);
+}
+
+.team-circle__tag {
+  position: absolute;
+  right: 6px;
+  bottom: 6px;
+  font-size: .7rem;
+  padding: .3rem .5rem;
+  border-radius: 999px;
+  backdrop-filter: blur(3px);
+}
+
